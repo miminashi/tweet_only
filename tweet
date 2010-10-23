@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'tweet_only'
 
-if ARGV[0] == nil
+if ARGV.join(' ') == ""
   puts "no text"
   exit(1)
 end
