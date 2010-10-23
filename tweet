@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+require 'tweet_only'
+
+if ARGV[0] == nil
+  puts "no text"
+  exit(1)
+end
+
+client = TweetOnlyClient.new
+unless client.authorized
+  authorize_url = client.authorize
+  %x{open #{authorize_url}}
+  print "input verifier: "
+  v = $stdin.gets.chop
+  unless client.verifier(v)
+    puts "Authorize failed"
+    exit(1)
+  end 
+  puts "Authorize succeeded"
+end
+
+if client.twitter_oauth
+  client.tweet(ARGV[0])
+else
+  puts "Twitter OAuth failed"
+end
+
