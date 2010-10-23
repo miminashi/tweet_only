@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 require 'tweet_only'
 
-if ARGV.join(' ') == ""
+text = ARGV.join(' ')
+if text == ""
   puts "no text"
   exit(1)
 end
@@ -20,7 +21,7 @@ unless client.authorized
 end
 
 if client.twitter_oauth
-  client.tweet(ARGV[0])
+  client.tweet(text)
 else
   puts "Twitter OAuth failed"
 end
