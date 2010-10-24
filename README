@@ -1,0 +1,31 @@
+コマンドラインからつぶやくだけのアプリです
+
+INSTALL
+
+まず必要なgemを入れてくだされ。
+$ sudo gem update --system
+$ sudo gem install twitter oauth
+
+ホームディレクトリにbinってディレクトリつくって、
+$ mkdir ~/bin
+tweet をその中に入れといて
+パーミッションを変更して、
+$ chmod +x ~/bin/tweet
+
+ホームディレクトリに ruby/lib ってディレクトリつくって、
+$ mkdir ~/ruby
+$ mkdir ~/ruby/lib
+tweet_only.rb をその中に入れといて、
+
+~/.bashrc に
+export PATH=$PATH:~/bin
+RUBYLIB=$HOME/ruby/lib
+export RUBYLIB
+の3行を追加しておけば他のコマンドと同じように使える
+と思う。
+
+
+USAGE
+
+$ tweet 投稿する文字列 スペースあけても大丈夫だよ
+
